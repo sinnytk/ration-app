@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+{% load static %}
+{%block css_link%}
+<link rel="stylesheet" href="{% static 'users/login.css' %}">{% endblock %}
+{%block content%}
+<div class="wrapper">
+    <form class="form-signin" method="POST">
+        {% csrf_token %}
+        <h2 class="form-signin-heading">Please login</h2>
+        <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
+        <input type="password" class="form-control" name="password" placeholder="Password" required="" />
+        <a href="{% url 'register'%}">Register instead!</a>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    </form>
+</div>
+{% endblock %}

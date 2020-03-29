@@ -43,7 +43,7 @@ ROOT_URLCONF = 'ration_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,5 +103,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Here you tell django to look for a folder named 'assets'
+]
 AUTH_USER_MODEL = 'users.CustomUser'
+LOGIN_URL = "users/login"
+LOGIN_REDIRECT_URL = "/"
