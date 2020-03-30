@@ -1,0 +1,31 @@
+{% extends "base2.html" %}
+{% block content %}
+<div class="wrapper">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">CNIC</th>
+                <th scope="col">Ration allocated?</th>
+                {% if allocation %}
+                <th scope="col">Organization Name</th>
+                <th scope="col">User</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tr>
+            {% if allocation %}
+            <td>{{allocation.cnic}}</td>
+            <td>Yes</td>
+            <td>{{allocation.org_name}}</td>
+            <td>{{allocation.user}}</td>
+            {% else %}
+            <td>{{CNIC}}</td>
+            <td>No!</td>
+            {% endif %}
+        </tr>
+    </table>
+    <form style="display: inline" action="/add" method="get">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Add ration!</button>
+    </form>
+</div>
+{% endblock %}

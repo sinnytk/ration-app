@@ -28,3 +28,7 @@ class CustomUserLoginForm(AuthenticationForm):
             )
         if not user.is_approved:
             raise forms.ValidationError("Account is not approved, contact admin.")
+    def __init__(self, *args, **kwargs):
+        super(CustomUserLoginForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
