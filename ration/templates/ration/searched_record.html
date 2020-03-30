@@ -21,11 +21,11 @@
             {% else %}
             <td>{{CNIC}}</td>
             <td>No!</td>
+            <form style="display: inline" action="/add" method="get">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Add ration!</button>
+            </form>
             {% endif %}
         </tr>
     </table>
-    <form style="display: inline" action="/add" method="get">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Add ration!</button>
-    </form>
 </div>
 {% endblock %}
