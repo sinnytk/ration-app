@@ -39,17 +39,24 @@ body {
 .layout__container {
   display: table-row;
   height: 100%;
+}
 /* sidebar */
 /* main*/
+main{
+  background: url("/static/jinnah.png");
+  background-position: right bottom; /*Positioning*/
+  background-repeat: no-repeat; /*Prevent showing multiple background images*/
+  background-size: 50vh;
 }
+
 .layout__container-before {
   display: table-cell;
   content: '';
-  background: #1486f0;
-  background: -moz-linear-gradient(top, #1486f0 0%, #8514f0 100%);
-  background: -webkit-linear-gradient(top, #1486f0 0%, #8514f0 100%);
-  background: linear-gradient(to bottom, #1486f0 0%, #8514f0 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1486f0', endColorstr='#8514f0',GradientType=0 );
+  background: #22c368;
+  background: -moz-linear-gradient(top, #22c368 0%, #95c734 100%);
+  background: -webkit-linear-gradient(top, #22c368 0%, #95c734 100%);
+  background: linear-gradient(to bottom, #22c368 0%, #95c734 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22c368', endColorstr='#95c734',GradientType=0 );
   background-position: 0 0;
 }
 .layout__container-before:before {
@@ -71,11 +78,11 @@ body {
 }
 .layout__container .sidebar {
   display: table-cell;
-  background: #1486f0;
-  background: -moz-linear-gradient(top, #1486f0 0%, #8514f0 100%);
-  background: -webkit-linear-gradient(top, #1486f0 0%, #8514f0 100%);
-  background: linear-gradient(to bottom, #1486f0 0%, #8514f0 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1486f0', endColorstr='#8514f0',GradientType=0 );
+  background: #22c368;
+  background: -moz-linear-gradient(top, #22c368 0%, #95c734 100%);
+  background: -webkit-linear-gradient(top, #22c368 0%, #95c734 100%);
+  background: linear-gradient(to bottom, #22c368 0%, #95c734 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22c368', endColorstr='#95c734',GradientType=0 );
   background-position: 0 0;
   height: 100%;
   width: 200px;
@@ -216,7 +223,7 @@ body {
 .layout__container .main__header-user-toggle {
   position: relative;
   display: inline-block;
-  background: #8514f0;
+  background: #95c734;
   color: #fff;
   width: 44px;
   height: 44px;
@@ -319,4 +326,7 @@ body {
 }
 #logoutBtn{
   color: white;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #95c734 !important;
 }

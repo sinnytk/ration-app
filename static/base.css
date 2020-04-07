@@ -1,0 +1,19 @@
+html, body { height:100%}
+body {
+   font-family: 'Open Sans', sans-serif;
+   background: url("/static/jinnah.png");
+   background-position: right bottom; /*Positioning*/
+   background-repeat: no-repeat; /*Prevent showing multiple background images*/
+   background-size: contain;
+}
+header{
+   width: 100%;
+   height: auto;
+   text-align: center;
+}
+.heading{
+   font-size: 4em;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #95c734 !important;
+}
