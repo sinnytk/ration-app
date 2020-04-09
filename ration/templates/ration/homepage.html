@@ -3,5 +3,27 @@
 <h2>Welcome to Ration App!</h2>
 <p>To add records against CNIC number, select "Add Record" on left</p>
 <p>To query if CNIC has received ration, select "Ration status" on left</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                Rank
+            </th>
+            <th scope="col">
+                Organization Name
+            </th>
+            <th>
+                Allocations
+            </th scope="col">
+        </tr>
+    </thead>
+    {% for alloc in allocations %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ alloc.org_name}}</td>
+        <td>{{ alloc.total}}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}

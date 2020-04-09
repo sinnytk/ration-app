@@ -15,7 +15,7 @@ class RationAllocation(models.Model):
 
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
-        if not self.id:
+        if not self.created:
             self.created = timezone.localtime(timezone.now())
         self.modified = timezone.localtime(timezone.now())
         return super(RationAllocation, self).save(*args, **kwargs)

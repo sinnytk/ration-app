@@ -6,11 +6,12 @@ from django.views.generic import CreateView, FormView
 from .models import RationAllocation
 from .forms import RationAllocationCreateForm, RationAllocationRetrieveForm
 from django.urls import reverse_lazy
-
+from django.db.models import Count
 
 @login_required
 def index(request):
-    return render(request, "ration/homepage.html", context={'page_name':"Dashboard"})
+    allocations = RationAllocation.objects.all().values('org_name').annotate(total=Count('org_name'))[:5]
+    return render(request, "ration/homepage.html", context={'page_name':"Dashboard","allocations":allocations})
 
 class AddRecord(LoginRequiredMixin, CreateView):
     model = RationAllocation
