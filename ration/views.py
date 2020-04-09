@@ -12,7 +12,7 @@ from django.db.models import Count
 def index(request):
     allocations_from_db = RationAllocation.objects.all()
     allocations_count = len(allocations_from_db)
-    allocations = allocations_from_db.values('org_name').annotate(total=Count('org_name'))[:5]
+    allocations = allocations_from_db.values('org_name','user__email').annotate(total=Count('org_name')).order_by('-total')[:5]
     return render(request, "ration/homepage.html", context={'page_name':"Dashboard","allocations":allocations,"allocations_count":allocations_count})
 
 class AddRecord(LoginRequiredMixin, CreateView):
