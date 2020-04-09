@@ -4,6 +4,9 @@
     <table class="table">
         <thead>
             <tr>
+                {% if allocation %}
+                <th scope="col">Date</th>
+                {% endif %}
                 <th scope="col">CNIC</th>
                 <th scope="col">Ration allocated?</th>
                 {% if allocation %}
@@ -14,6 +17,7 @@
         </thead>
         <tr>
             {% if allocation %}
+            <td>{{allocation.created}}</td>
             <td>{{allocation.cnic}}</td>
             <td>Yes</td>
             <td>{{allocation.org_name}}</td>
