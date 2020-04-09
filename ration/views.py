@@ -10,8 +10,10 @@ from django.db.models import Count
 
 @login_required
 def index(request):
-    allocations = RationAllocation.objects.all().values('org_name').annotate(total=Count('org_name'))[:5]
-    return render(request, "ration/homepage.html", context={'page_name':"Dashboard","allocations":allocations})
+    allocations_from_db = RationAllocation.objects.all()
+    allocations_count = len(allocations_from_db)
+    allocations = allocations_from_db.values('org_name').annotate(total=Count('org_name'))[:5]
+    return render(request, "ration/homepage.html", context={'page_name':"Dashboard","allocations":allocations,"allocations_count":allocations_count})
 
 class AddRecord(LoginRequiredMixin, CreateView):
     model = RationAllocation

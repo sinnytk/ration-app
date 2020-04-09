@@ -46,7 +46,7 @@ main{
   background: url("/static/jinnah.png");
   background-position: right bottom; /*Positioning*/
   background-repeat: no-repeat; /*Prevent showing multiple background images*/
-  background-size: 50vh;
+  background-size: 40vh;
 }
 
 .layout__container-before {
