@@ -12,6 +12,9 @@
             <th scope="col">
                 Organization Name
             </th>
+            <th scope="col">
+                User
+            </th>
             <th>
                 Allocations
             </th scope="col">
@@ -21,6 +24,7 @@
     <tr>
         <td>{{ forloop.counter }}</td>
         <td>{{ alloc.org_name}}</td>
+        <td>{{ alloc.user__email}}</td>
         <td>{{ alloc.total}}</td>
     </tr>
     {% endfor %}
