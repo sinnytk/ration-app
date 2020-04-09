@@ -18,4 +18,5 @@ class RationAllocation(models.Model):
         if not self.created:
             self.created = timezone.localtime(timezone.now())
         self.modified = timezone.localtime(timezone.now())
+        self.org_name = self.org_name.upper()
         return super(RationAllocation, self).save(*args, **kwargs)
