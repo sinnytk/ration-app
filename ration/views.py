@@ -10,7 +10,6 @@ from django.urls import reverse_lazy
 
 @login_required
 def index(request):
-    user = request.user
     return render(request, "ration/homepage.html", context={'page_name':"Dashboard"})
 
 class AddRecord(LoginRequiredMixin, CreateView):
