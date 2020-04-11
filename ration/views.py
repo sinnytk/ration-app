@@ -7,6 +7,7 @@ from .models import RationAllocation
 from .forms import RationAllocationCreateForm, RationAllocationRetrieveForm, PersonCreateForm
 from django.db.models import Count
 from django.urls import reverse
+from django.utils import timezone
 
 @login_required
 def index(request):
@@ -24,8 +25,13 @@ class GenerateForm(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         person = form.get_person()
         if person:
-            ration_form = RationAllocationCreateForm(initial={'person':person})
-            return render(self.request, 'ration/add_record_allocation.html', context={'page_name':"Add Record",'ration_form': ration_form})
+            last_allocation = RationAllocation.objects.filter(person=person).order_by('-created').last()
+            if last_allocation:
+                if (last_allocation.allocation_expiry - timezone.localtime(timezone.now())).days >= 0:
+                    return render(self.request, 'ration/record_exists.html', context={'page_name':'Add Record','last_allocation':last_allocation})
+            else:
+                ration_form = RationAllocationCreateForm(initial={'person':person})
+                return render(self.request, 'ration/add_record_allocation.html', context={'page_name':"Add Record",'ration_form': ration_form})
         else:
             ration_form = RationAllocationCreateForm(prefix = "ration_allocation")
             person_form = PersonCreateForm(prefix = "person", initial = {'cnic':form.cleaned_data['cnic']})
