@@ -4,31 +4,37 @@
     <table class="table">
         <thead>
             <tr>
-                {% if allocation %}
-                <th scope="col">Date</th>
-                {% endif %}
                 <th scope="col">CNIC</th>
                 <th scope="col">Ration allocated?</th>
-                {% if allocation %}
+                {% if allocations|length > 0 %}
+                <th scope="col">Date allocated</th>
+                <th scope="col">Valid till</th>
                 <th scope="col">Organization Name</th>
                 <th scope="col">User</th>
                 {% endif %}
             </tr>
         </thead>
         <tr>
-            {% if allocation %}
-            <td>{{allocation.created}}</td>
-            <td>{{allocation.cnic}}</td>
+            {% if allocations|length > 0 %}
+            {% for allocation in allocations %}
+        <tr>
+            <td>{{allocation.person.cnic}}</td>
             <td>Yes</td>
+            <td>{{allocation.created}}</td>
+            <td>{{allocation.allocation_expiry}}</td>
             <td>{{allocation.org_name}}</td>
             <td>{{allocation.user}}</td>
-            {% else %}
-            <td>{{CNIC}}</td>
-            <td>No!</td>
-            <form style="display: inline" action="/add" method="get">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Add ration!</button>
-            </form>
-            {% endif %}
+        </tr>
+        {% endfor %}
+        {% else %}
+        <td>{{cnic}}</td>
+        <td>No!</td>
+        <form style="display: inline" action="/add" method="post">
+            {% csrf_token %}
+            <input type="text" name="cnic" value={{cnic}} hidden />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Add ration!</button>
+        </form>
+        {% endif %}
         </tr>
     </table>
 </div>
