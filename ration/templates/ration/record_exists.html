@@ -1,0 +1,9 @@
+{% extends "base2.html" %}
+{% block content %}
+<h2>Add Record!</h2>
+<div class="wrapper">
+    <p>Cannot allocate ration to {{last_allocation.person.cnic}} as
+        {{last_allocation.person.first_name}} {{last_allocation.person.last_name}} has active allocation till
+        {{last_allocation.allocation_expiry}}</p>
+</div>
+{% endblock %}
